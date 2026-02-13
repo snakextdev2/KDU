@@ -10,13 +10,15 @@ jobs:
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v2
 
+      # Entramos a la carpeta Source para ejecutar el MSBuild
       - name: Build KDU Solution
-        run: msbuild KDU.sln /p:Configuration=Release /p:Platform=x64
+        run: msbuild Source/KDU.sln /p:Configuration=Release /p:Platform=x64
         
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: KDU-Binaries
+          # Ajustamos la ruta de salida (KDU usa carpetas específicas según su configuración)
           path: |
-            _output/x64/Release/kdu.exe
-            _output/x64/Release/drv64.dll
+            Source/Bin/x64/Release/kdu.exe
+            Source/Bin/x64/Release/drv64.dll
