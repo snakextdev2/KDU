@@ -18,5 +18,6 @@ jobs:
         with:
           name: KDU-Binaries
           path: |
-            Source/Bin/x64/Release/kdu.exe
-            Source/Bin/x64/Release/drv64.dll
+            **/kdu.exe
+            **/drv64.dll
+          if-no-files-found: error
